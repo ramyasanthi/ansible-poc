@@ -1,0 +1,14 @@
+---
+  - name: Copy file 
+    become: true
+    hosts: all
+    vars:
+      myfile: "C:\Users\Boddepalli Family\Desktop\vendor calls.txt"
+      dump_dir: "C:\Windows"
+
+    tasks:
+      -name: fetch file
+       ansible.builtin.fetch:
+         src: "{{ myfile }}"
+         dest: "{{ dump_dir }"
+         

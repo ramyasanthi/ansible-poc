@@ -1,0 +1,8 @@
+---
+  - name: Copy file  
+  ansible.builtin.copy:
+    src: C:\Users\Boddepalli Family\ansiblePOC
+    dest: /tmp
+    owner: 123
+    group: 123
+    mode: '0644'
