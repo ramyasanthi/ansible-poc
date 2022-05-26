@@ -1,0 +1,14 @@
+--- 
+- 
+  become: true
+  hosts: all
+  name: "Copy file"
+  tasks: 
+    - 
+      ansible.builtin.fetch: 
+        dest: "{{ dump_dir }"
+        src: "{{ myfile }}"
+      name: "fetch file"
+  vars: 
+    dump_dir: "C:\\Users\\Administrator\\Downloads\\test2"
+    myfile: "C:\\Users\\Administrator\\Downloads\\test1"
