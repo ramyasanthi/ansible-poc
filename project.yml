@@ -1,0 +1,16 @@
+---
+ -become: false
+   hosts: all
+   name: "Copy file"
+   vars:
+    dump_dir: "/opt/testdir/"
+    myfile: 'C:\project.txt'
+  
+   tasks:
+    - name: Find files in path
+      ansible.windows.win_find:
+        paths: C:\
+    - name: "fetch file"
+      ansible.builtin.fetch:
+       dest: "{{ dump_dir }}"
+       src: "{{ myfile }}"
