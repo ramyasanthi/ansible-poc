@@ -1,0 +1,10 @@
+---
+ - name: Ansible Copy Example Local to Remote
+  hosts: all
+  tasks:
+    - name: copying file with playbook
+      become: true 
+      copy:
+        src: /home/ramyaboddepalli/.local/bin/ramya.yml
+        dest: C:\Users\Administrator\Desktop\NewFile
+        
