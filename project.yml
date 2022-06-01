@@ -3,23 +3,32 @@
    hosts: all
    name: "Copy file"
    vars:
-    dump_dir: "/opt/testdir/"
+    dump_dir: "/opt/automationproject/"
     myfile: 'C:\project.txt'
-  
+
    tasks:
     - name: "Find files in path"
       ansible.windows.win_find:
         paths: C:\
-    - name: Copy a single file
+    
+    - name: "Copy a single file locally"
       win_copy:
        src: 'C:\project.txt'
-       dest: 'C:\pro.txt'
-       remote_src: yes    
-    - name: "fetch file"
+       dest: 'C:\project_copy.txt'
+       remote_src: yes
+
+    - name: "fetch file from the remote location"
       ansible.builtin.fetch:
        dest: "{{ dump_dir }}"
        src: "{{ myfile }}"
-    - name: Set the contents of a file
+
+    - name: "copying local file to remote"
+      become: false
+      copy:
+        src: '/home/ramyaboddepalli/.local/bin/localtoremote.yml'
+        dest: 'C:\Users\Administrator\Desktop\RemoteFile'
+
+    - name: "Set the contents of a file"
       win_copy:
        content: copying contents to the folder.
-       dest: C:\project.txt   
+       dest: C:\project.txt
