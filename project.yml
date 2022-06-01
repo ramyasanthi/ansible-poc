@@ -26,7 +26,7 @@
       become: false
       copy:
         src: '/home/ramyaboddepalli/.local/bin/localtoremote.yml'
-        dest: 'C:\Users\Administrator\Desktop\RemoteFile'
+        dest: 'C:\Users\Administrator\Desktop\RemoteFileFolder\'
 
     - name: "Set the contents of a file"
       win_copy:
