@@ -1,5 +1,5 @@
 ---
- -become: false
+ - become: false
    hosts: all
    name: "Copy file"
    vars:
@@ -7,10 +7,19 @@
     myfile: 'C:\project.txt'
   
    tasks:
-    - name: Find files in path
+    - name: "Find files in path"
       ansible.windows.win_find:
         paths: C:\
+    - name: Copy a single file
+      win_copy:
+       src: 'C:\project.txt'
+       dest: 'C:\pro.txt'
+       remote_src: yes    
     - name: "fetch file"
       ansible.builtin.fetch:
        dest: "{{ dump_dir }}"
        src: "{{ myfile }}"
+    - name: Set the contents of a file
+      win_copy:
+       content: copying contents to the folder.
+       dest: C:\project.txt   
